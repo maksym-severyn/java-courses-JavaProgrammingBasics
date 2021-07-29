@@ -149,8 +149,29 @@ public class Game {
      * @return String indicating the outcome of the game: "X wins" or "O wins" or "Tie" or "None"
      */
     public String checkGameWinner(char [][]grid){
+
         String result = "None";
-        //Student code goes here ...
+        char cell ;
+        String lineOfXcells = "";
+        String wholeGridString = "";
+
+        // looking for a winner in VERTICAL lines
+        for(int i = 0; i <= 2; i++) {
+            String lineOf3cells = "";
+            for (int j = 0; j <= 2; j++) {
+                cell = grid[i][j];
+                lineOf3cells += cell;
+                wholeGridString += cell;
+                if(lineOf3cells.equals("xxx")){
+                    result = "X wins";
+                    return result;
+                } else if(lineOf3cells.equals("ooo")){
+                    result = "O wins";
+                    return result;
+                }
+            }
+        }
+
         return result;
     }
 
