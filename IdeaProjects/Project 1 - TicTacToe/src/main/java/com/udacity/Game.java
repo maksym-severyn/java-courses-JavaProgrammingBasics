@@ -172,6 +172,59 @@ public class Game {
             }
         }
 
+        // checking if Tie is present now, using wholeGrindString that was filled in previous loop
+        if(!wholeGridString.contains("-")){
+            result = "Tie";
+            return result;
+        }
+
+        // looking for a winner in HORIZONTAL lines
+        for(int j = 0; j <= 2; j++) {
+            String lineOf3cells = "";
+            for (int i = 0; i <= 2; i++) {
+                cell = grid[i][j];
+                lineOf3cells += cell;
+                if(lineOf3cells.equals("xxx")){
+                    result = "X wins";
+                    return result;
+                } else if(lineOf3cells.equals("ooo")){
+                    result = "O wins";
+                    return result;
+                }
+            }
+        }
+
+        // looking for a winner in first-CROSS lines
+        for(int i = 0; i <= 2; i++){
+            cell = grid[i][i];
+            lineOfXcells += cell;
+            if(lineOfXcells.equals("xxx")){
+                result = "X wins";
+                return result;
+            } else if(lineOfXcells.equals("ooo")){
+                result = "O wins";
+                return result;
+            }
+        }
+
+        // looking for a winner in second-CROSS lines
+        lineOfXcells = "";
+        int i = 2;
+        int j = 0;
+        while(i >= 0){
+            cell = grid[i][j];
+            lineOfXcells += cell;
+            if(lineOfXcells.equals("xxx")){
+                result = "X wins";
+                return result;
+            } else if(lineOfXcells.equals("ooo")){
+                result = "O wins";
+                return result;
+            }
+            i--;
+            j++;
+        }
+
         return result;
     }
 
